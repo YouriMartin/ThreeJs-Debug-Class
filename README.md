@@ -3,24 +3,28 @@ Debug class based on the Bruno Simon's Debug class
 
 With this class you can write your debug in an other file.
 
-In the debug file you can write three different objects : 
-    
-    1. Folder : 
-        It looks like :
+ ## In the debug file you can write three different objects : 
+ ### 1. Folder : 
+
+It looks like :
+
         {
             type: "folder",
             name: "myFolderName",
             elements : []
         }
 
-        It corresponds to the lil-gui : 
-            const folder = debugFolder.add(name)
+It corresponds to the lil-gui : 
 
-        In the elements array you can put object / colors / folder
+        const folder = debugFolder.add(name)
+
+In the elements array you can put object / colors / folder
 
     
-    2. Object :
-        It looks like :
+### 2. Object :
+
+It looks like :
+
         {
             type: "object",
             name: "myObjectName",
@@ -33,9 +37,9 @@ In the debug file you can write three different objects :
             }
         }
 
-        You can add in the "add" object a callBack function :
+You can add in the "add" object a callBack function :
 
-            - onChange :
+* onChange :
 
                 add : {
                     ...
@@ -46,7 +50,7 @@ In the debug file you can write three different objects :
                     }
                 }
             
-            - onFinishChange :
+* onFinishChange :
 
                 add : {
                     ...
@@ -57,7 +61,8 @@ In the debug file you can write three different objects :
                     }
                 }
         
-         It corresponds to the lil-gui : 
+It corresponds to the lil-gui : 
+
             debugFolder.add(add.path, add.value)
                 .min(add.min)
                 .max(add.max)
@@ -67,8 +72,10 @@ In the debug file you can write three different objects :
                     myFunction();
                 })
     
-    3. Color :
-         It looks like :
+### 3. Color :
+
+It looks like :
+
          {
             type: "color",
             name: "myColor",
@@ -82,9 +89,10 @@ In the debug file you can write three different objects :
             },
          }
 
-        It's like with the object, you can add callBack function.
+It's like with the object, you can add callBack function.
 
-        It corresponds to the lil-gui : 
+It corresponds to the lil-gui : 
+
             debugFolder.addColor(add.path, add.value)
                 .name(name)
                 .onChange(() =>{
@@ -92,18 +100,21 @@ In the debug file you can write three different objects :
                 })
 
 
-The way to call that debug function :
+## The way to call that debug function :
 
 
-    In your class :
-        - import :
-    import debugArray from "./MyClassDebug ";
+### In your class :
 
-        - in the constructor :
-    ...
-    // Debug
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui.addFolder("MyClass");
-      this.debug.setDebug(debugArray, this.debugFolder, this);
-    }
+* import :
+
+        import debugArray from "./MyClassDebug ";
+
+* in the constructor :
+
+        ...
+        // Debug
+        if (this.debug.active) {
+        this.debugFolder = this.debug.ui.addFolder("MyClass");
+        this.debug.setDebug(debugArray, this.debugFolder, this);
+        }
     
